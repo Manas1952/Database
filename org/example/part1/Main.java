@@ -5,7 +5,6 @@ import java.sql.*;
 public class Main {
   public static void main(String[] args) {
 
-    Main main = new Main();
 //    Class.forName("org.h2.Driver");
 
     try (Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "")) {

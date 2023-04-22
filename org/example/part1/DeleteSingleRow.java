@@ -13,8 +13,8 @@ public class DeleteSingleRow {
       Statement statement = connection.createStatement();
 
       System.out.println("Enter ename to delete: ");
-      String ename = scanner.nextLine();
-      String sqlQuery = String.format("delete from employees where ename='%s'", ename);
+      int eno = scanner.nextInt();
+      String sqlQuery = String.format("delete from employees where eno='%d'", eno);
       int count = statement.executeUpdate(sqlQuery);
 
       System.out.println("rows deleted: " + count);

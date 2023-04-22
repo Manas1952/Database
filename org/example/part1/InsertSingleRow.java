@@ -10,7 +10,7 @@ public class InsertSingleRow {
 //    try (Connection connection = DriverManager.getConnection("jdbc:h2:~/test", "sa", "")) {
     try (Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "")) {
       Statement statement = connection.createStatement();
-      statement.executeUpdate("insert into employees values(2, 'Manas', 1000000, 'address')");
+      statement.executeUpdate("insert into dummy(name, balance) values('Param', 1000000)");
 
       System.out.println("row inserted");
     } catch (SQLException e) {
