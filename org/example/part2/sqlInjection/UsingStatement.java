@@ -26,3 +26,5 @@ public class UsingStatement {
     }
   }
 }
+
+// select * from users where uname='manas'--' and upass = 'password1'";

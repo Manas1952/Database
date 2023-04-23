@@ -23,7 +23,7 @@ public class Main {
         System.out.println(resultSet.getInt(1) + " " + resultSet.getString(2) + " " + resultSet.getInt(3) + " " + resultSet.getString(4));
       }
     }
-    catch (SQLException e) {
+    catch (Exception e) {
       System.out.println("Exception: " + e);
     }
   }
