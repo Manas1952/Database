@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class NthHighestSalary {
   public static void main(String[] args) {
 
-    try (Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", ""); Scanner scanner = new Scanner(System.in)) {
+    try (Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");) {
 
       if (connection != null) {
         System.out.println("connected");

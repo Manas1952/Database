@@ -11,10 +11,10 @@ public class UsingStatement {
 
       Statement statement = connection.createStatement();
 
-      statement.addBatch("insert into employees values (9, 'qwer', 1234, 'qwer')");
+      statement.addBatch("insert into employees values (13, 'qwer', 1234, 'qwer')");
       statement.addBatch("update employees set esal=2345 where eno=9");
-      statement.addBatch("update employees set esal=2345 where eno=");
-      statement.addBatch("delete from employees where eno=8");
+//      statement.addBatch("update employees set esal=2345 where eno=");
+      statement.addBatch("delete from employees where eno=13");
 
       int counts[] = statement.executeBatch();
 

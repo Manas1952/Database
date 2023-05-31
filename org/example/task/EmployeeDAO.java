@@ -3,25 +3,45 @@ package org.example.task;
 import java.sql.*;
 
 public class EmployeeDAO {
-  public Employee getEmployee(int eno) {
-    try (Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "")) {
+  public String[] getTables(Connection connection) throws SQLException {
+    PreparedStatement statement = connection.prepareStatement("select table_name from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'PUBLIC'");
+    ResultSet resultSet = statement.executeQuery();
 
+    String[] tables = new String[10];
+    int iterator = 0;
+    String tableName;
+
+    System.out.println("----- Tables -----");
+    while (resultSet.next()) {
+      tableName = resultSet.getString(1);
+      System.out.println((iterator+1) + ". " + tableName);
+      tables[iterator] = tableName;
+      iterator++;
+    }
+
+    return tables;
+  }
+  public void execute(String sqlQuery, Connection connection) {
+    try {
       Statement statement = connection.createStatement();
 
-      ResultSet resultSet = statement.executeQuery("select * from employees where eno = " + eno);
+      boolean isSelectQuery = statement.execute(sqlQuery);
+      if (isSelectQuery) {
+        ResultSet resultSet = statement.getResultSet();
 
-      resultSet.next();
+        while (resultSet.next()) {
+          for (int i = 0; i < resultSet.getMetaData().getColumnCount(); i++) {
+            System.out.print(resultSet.getObject(i+1) + " ");
+          }
+          System.out.println();
+        }
+      }
+      else {
+        int affectedRows = statement.getUpdateCount();
+        System.out.println("Affected rows: " + affectedRows);
+      }
 
-      Employee employee = new Employee();
-
-      employee.setEno(resultSet.getInt(1));
-      employee.setEname(resultSet.getString(2));
-      employee.setEsal(resultSet.getInt(3));
-      employee.setEaddr(resultSet.getString(4));
-
-      return employee;
-    }
-    catch (SQLException e) {
+    } catch (SQLException e) {
       throw new RuntimeException(e);
     }
   }

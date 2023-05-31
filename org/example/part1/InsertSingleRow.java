@@ -13,7 +13,7 @@ public class InsertSingleRow {
       statement.executeUpdate("insert into dummy(name, balance) values('Param', 1000000)");
 
       System.out.println("row inserted");
-    } catch (SQLException e) {
+    } catch (Exception e) {
       throw new RuntimeException(e);
     }
   }

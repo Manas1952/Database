@@ -11,9 +11,9 @@ public class PreparedStatement {
 
       java.sql.PreparedStatement preparedStatement = connection.prepareStatement("insert into employees values(?,?,?,?)");
 
-      preparedStatement.setInt(1, 6);
-      preparedStatement.setString(2, "name");
-      preparedStatement.setDouble(3, 9876.00);
+      preparedStatement.setInt(1, 12);
+      preparedStatement.setString(2, "Shyam");
+      preparedStatement.setDouble(3, 987600.12);
       preparedStatement.setString(4, "addr");
 
       preparedStatement.addBatch();

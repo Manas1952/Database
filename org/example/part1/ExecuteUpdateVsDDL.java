@@ -5,7 +5,6 @@ import java.sql.*;
 public class ExecuteUpdateVsDDL {
   public static void main(String[] args) {
 
-    ExecuteUpdateVsDDL main = new ExecuteUpdateVsDDL();
 //    Class.forName("org.h2.Driver");
 
     try (Connection connection = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "")) {
